@@ -24,7 +24,7 @@ public class CreateRoles implements CommandLineRunner {
             roleRepository.save(adminRole);
             roleRepository.save(customerRole);
             log.info(">>>> Created admin and customer roles...");
-        }g
+        }
     }
 
 //    @Override

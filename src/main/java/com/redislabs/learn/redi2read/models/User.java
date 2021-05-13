@@ -1,5 +1,7 @@
 package com.redislabs.learn.redi2read.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -16,6 +18,7 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonIgnoreProperties(value = {"password", "passwordConfirm"}, allowSetters = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(onlyExplicitlyIncluded = true)
 @Data
@@ -46,8 +49,18 @@ public class User {
     @Reference
     private Set<Role> roles = new HashSet<Role>();
 
+    @Reference
+    @JsonIdentityReference(alwaysAsId = true)
     public void addRole(Role role) {
         roles.add(role);
+    }
+
+    @Reference
+    @JsonIdentityReference(alwaysAsId = true)
+    private Set<Book> books = new HashSet<Book>();
+
+    public void addBook(Book book) {
+        books.add(book);
     }
 
 }

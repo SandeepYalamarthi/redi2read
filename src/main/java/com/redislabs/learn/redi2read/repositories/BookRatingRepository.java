@@ -1,11 +1,9 @@
 package com.redislabs.learn.redi2read.repositories;
 
-import com.redislabs.learn.redi2read.models.Role;
+import com.redislabs.learn.redi2read.models.BookRating;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends CrudRepository<Role, String> {
-
-    Role findFirstByName(String role);
+public interface BookRatingRepository extends CrudRepository<BookRating, String> {
 }
